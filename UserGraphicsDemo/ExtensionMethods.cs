@@ -13,11 +13,12 @@ public static class ExtensionMethods
         while (true)
         {
             Console.WriteLine(mesaj);
-            if (DateTime.TryParse(Console.ReadLine(), out DateTime validDecimal))
+            string input = Console.ReadLine();
+            if (!string.IsNullOrWhiteSpace(input) && DateTime.TryParseExact(input,"yyyy-MM-dd",null, System.Globalization.DateTimeStyles.None, out DateTime validDate))
             {
-                return validDecimal;
+                return validDate;
             }
-            Console.WriteLine("Geçersiz sayı formatı. Lütfen geçerli bir tarih girin:");
+            Console.WriteLine("Geçersiz tarih formatı. Lütfen geçerli bir tarih girin:");
         }
     }
     public static decimal FiyatGirisiKontrolEt(this string mesaj)
@@ -25,7 +26,8 @@ public static class ExtensionMethods
         while (true)
         {
             Console.WriteLine(mesaj);
-            if (decimal.TryParse(Console.ReadLine(), out decimal fiyat) && fiyat > 0)
+            string input = Console.ReadLine();
+            if (!string.IsNullOrWhiteSpace(input) && decimal.TryParse(input, out decimal fiyat) && fiyat > 0)
             {
                 return fiyat;
             }

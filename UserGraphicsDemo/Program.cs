@@ -72,6 +72,11 @@ while (restartManager.ProgramiBaslat())
         Console.WriteLine($"Geçersiz giriş formatı. Lütfen tekrar deneyin. Hata açıklaması {ex}");
         restartManager.BaslatilmaTrigger();
     }
+    catch (OverflowException ex)
+    {
+        Console.WriteLine($"Aşırı büyük veya küçük değer hatası. Lütfen geçerli bir değer girin. Hata açıklaması: {ex}");
+        restartManager.BaslatilmaTrigger();
+    }
     catch (Exception ex)
     {
         Console.WriteLine($"Bir hata oluştu: {ex.Message}");
